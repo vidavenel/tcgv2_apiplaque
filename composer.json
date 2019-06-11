@@ -1,0 +1,34 @@
+{
+    "name": "tcgv2/apiplaque",
+    "description": "Package utilisant le service https://apiplaqueimmatriculation.com/ pour recupérer les informations d'un véhicule",
+    "authors": [
+        {
+            "name": "Vincent DAVENEL",
+            "email": "vincent@aigle-developpement.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "^5.8",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tcgv2\\Apiplaque\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tcgv2\\Apiplaque\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tcgv2\\Apiplaque\\ApiplaqueSeviceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.2"
+    }
+}
