@@ -34,7 +34,8 @@ class ApiplaqueService
                     'immatriculation' => $plaque,
                     'format' => self::FORMAT,
                     'token' => $this->token
-                ]
+                ],
+                'timeout' => 5
             ]);
         } catch (GuzzleException $e) {
             throw new Exception('Erreur de communication avec le service apiplaque');
