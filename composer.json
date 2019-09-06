@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "illuminate/support": "^5.8",
+        "illuminate/support": "^5.7",
         "guzzlehttp/guzzle": "~6.0"
     },
     "autoload": {
@@ -24,7 +24,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Tcgv2\\Apiplaque\\ApiplaqueSeviceProvider"
+                "Tcgv2\\Apiplaque\\ApiplaqueServiceProvider"
             ]
         }
     },
