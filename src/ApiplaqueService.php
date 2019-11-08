@@ -30,18 +30,29 @@ class ApiplaqueService
 
         try {
             $response = $clientHttp->request('GET', '', [
+                'headers' => [
+                    'Accept'     => 'application/json',
+                ],
                 'query' => [
                     'immatriculation' => $plaque,
                     'format' => self::FORMAT,
                     'token' => $this->token
                 ],
-                'timeout' => 10
+                'timeout' => 20,
+                'connect_timeout' => 20,
+                'read_timeout' => 20
             ]);
-        } catch (GuzzleException $e) {
-            throw new Exception('Erreur de communication avec le service apiplaque');
-        }
 
-        $result = json_decode($response->getBody()->getContents(), true);
-        return $result['data']['result'];
+            $result = strstr($response->getBody()->getContents(), '{');
+            $result = json_decode($result, true);
+
+            if (array_key_exists('result', $result['data']))
+                return $result['data']['result'];
+
+            return $result['data'];
+        } catch (GuzzleException $e) {
+            Log::error($e->getMessage());
+            throw new Exception('Erreur de communication avec le service apiplaque: '.$e->getMessage());
+        }
     }
 }
